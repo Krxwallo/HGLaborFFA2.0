@@ -67,9 +67,7 @@ public class KitSelectorImpl extends KitSelector {
                 player.sendMessage(Localization.INSTANCE.getMessage("kitSelection.pickMessage",
                         ImmutableMap.of("kitName", kit.getName()), ChatUtils.locale(player)));
                 player.closeInventory();
-                if (ffaPlayer.getKits().stream().noneMatch(kits -> kits.equals(NoneKit.INSTANCE))) {
-                    FFA.getArenaManager().teleportToArena(player);
-                }
+                FFA.getArenaManager().teleportToArena(player);
             }
         }
     }
