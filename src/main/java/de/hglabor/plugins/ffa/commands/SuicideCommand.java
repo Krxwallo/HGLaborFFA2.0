@@ -2,6 +2,7 @@ package de.hglabor.plugins.ffa.commands;
 
 import de.hglabor.plugins.ffa.player.FFAPlayer;
 import de.hglabor.plugins.ffa.player.PlayerList;
+import de.hglabor.plugins.kitapi.kit.kits.SoulstealerKit;
 import de.hglabor.utils.noriskutils.command.AbstractCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,6 +21,12 @@ public class SuicideCommand extends AbstractCommand {
 
             if (ffaPlayer.isInArena()) {
                 player.setHealth(0);
+                for (Object kit : ffaPlayer.getKits()) {
+                    if (kit instanceof SoulstealerKit) {
+                        // Kill player again so he exits "soulstealer mode"
+                        player.setHealth(0);
+                    }
+                }
             }
             return true;
         }
