@@ -69,6 +69,7 @@ public class KitSelectorImpl extends KitSelector {
                 player.closeInventory();
                 if (ffaPlayer.getKits().stream().noneMatch(kits -> kits.equals(NoneKit.INSTANCE))) {
                     FFA.getArenaManager().teleportToArena(player);
+                    player.setFireTicks(0);
                 }
             }
         }
